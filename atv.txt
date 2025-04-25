@@ -1,0 +1,7 @@
+//nome.length>1
+//e-mail deve conter @ e.
+//senha deve ser > 6
+// senha == senha
+// cpf.length==11
+
+//aparecer o cpf em baixo do nome
