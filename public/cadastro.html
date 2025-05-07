@@ -116,7 +116,7 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var idEmpresaVincular;
 
     // Verificando se há algum campo em branco
     if (
@@ -161,9 +161,9 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        cpfserver: cpfVar, //adiciona novo campo para enviar ao routes
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        idEmpresaVincularServer: idEmpresaVincular,
+        cpfServer: cpfVar //adiciona novo campo para enviar ao routes
       }),
     })
       .then(function (resposta) {

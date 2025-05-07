@@ -5,17 +5,19 @@ var aquarioModel = require("../models/aquarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var cpf = req.body.cpfServer; //variavel para autenticação
+    // var cpf = req.body.cpfServer; //variavel para autenticação
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    } else if (cpf == undefined) { //Adicionei esse campo aqui para retorno de erro
-        res.status(400).send("Seu CPF está indefinido!");//Mensagem de erro caso esteja indefinido
-    } else {
+    } 
+    // else if (cpf == undefined) { //Adicionei esse campo aqui para retorno de erro
+    //     res.status(400).send("Seu CPF está indefinido!");//Mensagem de erro caso esteja indefinido
+    // }
+     else {
 
-        usuarioModel.autenticar(email, senha, cpf) //adiciona
+        usuarioModel.autenticar(email, senha) //adiciona
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -30,7 +32,7 @@ function autenticar(req, res) {
                                     res.json({
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
-                                        cpf: resultadoAutenticar[0].cpf, //adicionei o campo cpf
+                                        // cpf: resultadoAutenticar[0].cpf, //adicionei o campo cpf
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         aquarios: resultadoAquarios
@@ -70,7 +72,7 @@ function cadastrar(req, res) {
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (cpf == undefined) { //adicionar validação de cpf
-        res.status(400).send("Seu email está undefined!"); //adicionar mensagem de erro
+        res.status(400).send("Seu cpf está undefined!"); //adicionar mensagem de erro
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else if (fkEmpresa == undefined) {
@@ -78,7 +80,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, cpf, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, email, senha, fkEmpresa, cpf)
             .then(
                 function (resultado) {
                     res.json(resultado);
