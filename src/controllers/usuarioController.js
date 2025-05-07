@@ -5,17 +5,12 @@ var aquarioModel = require("../models/aquarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    // var cpf = req.body.cpfServer; //variavel para autenticação
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    } 
-    // else if (cpf == undefined) { //Adicionei esse campo aqui para retorno de erro
-    //     res.status(400).send("Seu CPF está indefinido!");//Mensagem de erro caso esteja indefinido
-    // }
-     else {
+    } else {
 
         usuarioModel.autenticar(email, senha) //adiciona
             .then(
@@ -32,7 +27,6 @@ function autenticar(req, res) {
                                     res.json({
                                         id: resultadoAutenticar[0].id,
                                         email: resultadoAutenticar[0].email,
-                                        // cpf: resultadoAutenticar[0].cpf, //adicionei o campo cpf
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         aquarios: resultadoAquarios
@@ -42,7 +36,7 @@ function autenticar(req, res) {
                                 }
                             })
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email, CPF e/ou senha inválido(s)");
+                        res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }

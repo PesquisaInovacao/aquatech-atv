@@ -118,6 +118,8 @@
     var codigoVar = codigo_input.value;
     var idEmpresaVincular;
 
+
+
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
@@ -129,11 +131,40 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "(Campos não podem estar em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else if (!(nomeVar.length > 1)) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Nome deve ter mais de 1 caractere)";
+
+      finalizarAguardar();
+      return false;
+    } else if (!(emailVar.includes('@')) || !(emailVar.includes('.'))) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(email não atende os requisitos)";
+
+      finalizarAguardar();
+      return false;
+    } else if (!(cpfVar.length == 11)) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(CPF deve ter 11 caracteres)";
+
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar.length <= 6 || !(confirmacaoSenhaVar == senhaVar)) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Senha invalida, verifique se tem mais de 6 caracteres ou se o campo senha e confirmar senha coincidem)";
 
       finalizarAguardar();
       return false;
     } else {
+      console.log('foi');
       setInterval(sumirMensagem, 5000);
     }
 
