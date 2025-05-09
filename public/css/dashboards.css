@@ -372,6 +372,8 @@ canvas {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .hello h3 {
@@ -381,6 +383,16 @@ canvas {
 }
 
 .hello h3 span {
+  font-weight: 800;
+}
+
+.hello h4 {
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: white
+}
+
+.hello h4 span {
   font-weight: 800;
 }
 

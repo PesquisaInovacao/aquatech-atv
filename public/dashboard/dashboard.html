@@ -11,8 +11,9 @@
     
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
+    
     <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
+    <script src="../js/alerta.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -28,7 +29,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body  onload="validarSessao(), atualizarFeed()">
 
     <div class="janela">
         <div class="header-left">
@@ -36,6 +37,7 @@
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                 <h4><span id="c_usuario">cpf</span></h4><!--  -->
             </div>
 
             <div class="btn-nav-white">
@@ -80,7 +82,8 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    //  c_usuario.innerHTML = sessionStorage.CPF_USUARIO;
 
     let proximaAtualizacao;
 
