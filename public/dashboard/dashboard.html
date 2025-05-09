@@ -29,7 +29,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body  onload="validarSessao(), atualizarFeed()">
+<body>
 
     <div class="janela">
         <div class="header-left">
@@ -83,11 +83,11 @@
 
 <script>
     // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    //  c_usuario.innerHTML = sessionStorage.CPF_USUARIO;
+    // c_usuario.innerHTML = sessionStorage.CPF_USUARIO;
 
     let proximaAtualizacao;
 
-    window.onload = exibirAquariosDoUsuario();
+    window.onload = [exibirAquariosDoUsuario(), validarSessao(), atualizarFeed()];
 
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
